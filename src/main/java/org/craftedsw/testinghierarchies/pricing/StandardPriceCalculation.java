@@ -6,8 +6,7 @@ public class StandardPriceCalculation {
     public StandardPriceCalculation() {
     }
 
-    @Override
-    protected double calculateProductPrice(Product product, int quantity) {
+    public double calculateProductPrice(Product product, int quantity) {
         return product.getPrice() * quantity;
     }
 }
