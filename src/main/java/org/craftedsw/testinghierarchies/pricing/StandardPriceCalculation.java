@@ -2,7 +2,7 @@ package org.craftedsw.testinghierarchies.pricing;
 
 import org.craftedsw.testinghierarchies.domain.Product;
 
-public class StandardPriceCalculation {
+public class StandardPriceCalculation implements PricingCalculation {
     public StandardPriceCalculation() {
     }
 
