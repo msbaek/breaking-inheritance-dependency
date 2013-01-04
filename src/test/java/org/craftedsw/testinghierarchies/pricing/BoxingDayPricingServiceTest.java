@@ -35,6 +35,5 @@ public class BoxingDayPricingServiceTest {
         protected double calculateProductPrice(Product product, int quantity) {
             return super.calculateProductPrice(product, quantity);
         }
-
     }
 }
