@@ -8,8 +8,7 @@ public class BoxingDayPricingCalculation {
     public BoxingDayPricingCalculation() {
     }
 
-    @Override
-    protected double calculateProductPrice(Product product, int quantity) {
+    public double calculateProductPrice(Product product, int quantity) {
         return ((product.getPrice() * quantity) * BOXING_DAY_DISCOUNT);
     }
 }
