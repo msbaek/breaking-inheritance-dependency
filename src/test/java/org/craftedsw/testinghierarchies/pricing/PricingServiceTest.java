@@ -25,11 +25,13 @@ public class PricingServiceTest {
 
     @Mock private PricingCalculation pricingCalculation;
     @Mock private VoucherDiscountCalculation voucherDiscountCalculation;
+    @Mock private PrimeUserDiscountCalculation primeUserDiscountCalculation;
 
     @Before
     public void initialise() {
         this.pricingService.setPriceCalculation(pricingCalculation);
         this.pricingService.setVoucherDiscountCalculation(voucherDiscountCalculation);
+        this.pricingService.setPrimerUserDiscountCalculation(primeUserDiscountCalculation);
     }
 
     @Test
@@ -59,6 +61,22 @@ public class PricingServiceTest {
         double price = pricingService.calculatePrice(shoppingBasket, new User(), FIVE_POUNDS_VOUCHER);
 
         verify(voucherDiscountCalculation, times(1)).calculateVoucherDiscount(20, FIVE_POUNDS_VOUCHER);
+    }
+
+    @Test public void
+    should_calculate_prime_user_discount() {
+        Product book = aProduct().named("book").costing(10).build();
+        shoppingBasket = aShoppingBasket()
+                .with(2, book)
+                .build();
+        when(pricingCalculation.calculateProductPrice(book, 2)).thenReturn(20D);
+        shoppingBasket = aShoppingBasket()
+                .with(2, book)
+                .build();
+
+        double price = pricingService.calculatePrice(shoppingBasket, null, null);
+
+        verify(primeUserDiscountCalculation, times(1)).calculateDiscount(null);
     }
 
     private class TestablePricingService extends PricingService {

@@ -25,5 +25,8 @@ public abstract class PricingService {
     public void setVoucherDiscountCalculation(VoucherDiscountCalculation voucherDiscountCalculation) {
         this.voucherDiscountCalculation = voucherDiscountCalculation;
     }
+
+    public void setPrimerUserDiscountCalculation(PrimeUserDiscountCalculation primerUserDiscountCalculation) {
+    }
 }
 
