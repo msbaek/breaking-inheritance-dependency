@@ -12,7 +12,7 @@ public abstract class PricingService {
         for (ShoppingBasket.Item item : shoppingBasket.items()) {
             total += pricingCalculation.calculateProductPrice(item.getProduct(), item.getQuantity());
         }
-        total = applyAdditionalDiscounts(total, voucher);
+        total = voucherDiscountCalculation.calculateVoucherDiscount(total, voucher);
         return total * ((100 - discount) / 100);
     }
 
