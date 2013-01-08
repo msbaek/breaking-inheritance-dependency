@@ -5,9 +5,10 @@ import org.craftedsw.testinghierarchies.domain.User;
 public abstract class PricingService {
     private PricingCalculation pricingCalculation;
     private VoucherDiscountCalculation voucherDiscountCalculation;
+    private PrimeUserDiscountCalculation primerUserDiscountCalculation;
 
     public double calculatePrice(ShoppingBasket shoppingBasket, User user, String voucher) {
-        double discount = calculateDiscount(user);
+        double discount = primerUserDiscountCalculation.calculateDiscount(user);
         double total = 0;
         for (ShoppingBasket.Item item : shoppingBasket.items()) {
             total += pricingCalculation.calculateProductPrice(item.getProduct(), item.getQuantity());
@@ -27,6 +28,7 @@ public abstract class PricingService {
     }
 
     public void setPrimerUserDiscountCalculation(PrimeUserDiscountCalculation primerUserDiscountCalculation) {
+        this.primerUserDiscountCalculation = primerUserDiscountCalculation;
     }
 }
 
