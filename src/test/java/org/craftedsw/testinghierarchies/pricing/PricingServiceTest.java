@@ -66,10 +66,5 @@ public class PricingServiceTest {
         protected double calculateDiscount(User user) {
             return 0;
         }
-
-        @Override
-        protected double applyAdditionalDiscounts(double total, String voucher) {
-            return 0;
-        }
     }
 }

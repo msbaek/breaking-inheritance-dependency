@@ -2,7 +2,7 @@ package org.craftedsw.testinghierarchies.pricing;
 
 import org.craftedsw.testinghierarchies.domain.User;
 
-public abstract class UserDiscountPricingService extends  PricingService {
+public class UserDiscountPricingService extends  PricingService {
     @Override
     protected double calculateDiscount(User user) {
         int discount = 0;

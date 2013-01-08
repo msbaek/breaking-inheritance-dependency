@@ -18,8 +18,6 @@ public abstract class PricingService {
 
     protected abstract double calculateDiscount(User user);
 
-    protected abstract double applyAdditionalDiscounts(double total, String voucher);
-
     public void setPriceCalculation(PricingCalculation pricingCalculation) {
         this.pricingCalculation = pricingCalculation;
     }
