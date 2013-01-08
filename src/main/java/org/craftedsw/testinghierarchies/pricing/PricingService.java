@@ -4,6 +4,7 @@ import org.craftedsw.testinghierarchies.domain.User;
 
 public abstract class PricingService {
     private PricingCalculation pricingCalculation;
+    private VoucherDiscountCalculation voucherDiscountCalculation;
 
     public double calculatePrice(ShoppingBasket shoppingBasket, User user, String voucher) {
         double discount = calculateDiscount(user);
@@ -21,6 +22,10 @@ public abstract class PricingService {
 
     public void setPriceCalculation(PricingCalculation pricingCalculation) {
         this.pricingCalculation = pricingCalculation;
+    }
+
+    public void setVoucherDiscountCalculation(VoucherDiscountCalculation voucherDiscountCalculation) {
+        this.voucherDiscountCalculation = voucherDiscountCalculation;
     }
 }
 
