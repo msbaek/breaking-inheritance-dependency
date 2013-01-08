@@ -20,7 +20,7 @@ public class PricingServiceTest {
     private static final String NO_VOUCHER = "";
     private static final String FIVE_POUNDS_VOUCHER = "5";
 
-    private TestablePricingService pricingService = new TestablePricingService();
+    private PricingService pricingService = new PricingService();
     private ShoppingBasket shoppingBasket;
 
     @Mock private PricingCalculation pricingCalculation;
@@ -77,12 +77,5 @@ public class PricingServiceTest {
         double price = pricingService.calculatePrice(shoppingBasket, null, null);
 
         verify(primeUserDiscountCalculation, times(1)).calculateDiscount(null);
-    }
-
-    private class TestablePricingService extends PricingService {
-        @Override
-        protected double calculateDiscount(User user) {
-            return 0;
-        }
     }
 }

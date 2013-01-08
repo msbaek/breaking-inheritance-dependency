@@ -2,7 +2,7 @@ package org.craftedsw.testinghierarchies.pricing;
 
 import org.craftedsw.testinghierarchies.domain.User;
 
-public abstract class PricingService {
+public class PricingService {
     private PricingCalculation pricingCalculation;
     private VoucherDiscountCalculation voucherDiscountCalculation;
     private PrimeUserDiscountCalculation primerUserDiscountCalculation;
@@ -16,8 +16,6 @@ public abstract class PricingService {
         total = voucherDiscountCalculation.calculateVoucherDiscount(total, voucher);
         return total * ((100 - discount) / 100);
     }
-
-    protected abstract double calculateDiscount(User user);
 
     public void setPriceCalculation(PricingCalculation pricingCalculation) {
         this.pricingCalculation = pricingCalculation;
