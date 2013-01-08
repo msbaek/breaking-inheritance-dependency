@@ -6,13 +6,11 @@ public abstract class VoucherPricingService extends UserDiscountPricingService {
 
     @Override
     protected double applyAdditionalDiscounts(double total, String voucher) {
-        double voucherValue = voucherService.getVoucherValue(voucher);
-        double totalAfterValue = total - voucherValue;
-        return (totalAfterValue > 0) ? totalAfterValue : 0;
+        VoucherDiscountCalculation voucherDiscountCalculation = new VoucherDiscountCalculation(voucherService);
+        return voucherDiscountCalculation.calculateVoucherDiscount(total, voucher);
     }
 
     public void setVoucherService(VoucherService voucherService) {
         this.voucherService = voucherService;
     }
 }
-
