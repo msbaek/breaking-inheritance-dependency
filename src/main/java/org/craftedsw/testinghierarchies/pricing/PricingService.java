@@ -11,13 +11,13 @@ public abstract class PricingService {
         for (ShoppingBasket.Item item : shoppingBasket.items()) {
             total += pricingCalculation.calculateProductPrice(item.getProduct(), item.getQuantity());
         }
-        total = applyAdditionalDiscounts(total, user, voucher);
+        total = applyAdditionalDiscounts(total, voucher);
         return total * ((100 - discount) / 100);
     }
 
     protected abstract double calculateDiscount(User user);
 
-    protected abstract double applyAdditionalDiscounts(double total, User user, String voucher);
+    protected abstract double applyAdditionalDiscounts(double total, String voucher);
 
     public void setPriceCalculation(PricingCalculation pricingCalculation) {
         this.pricingCalculation = pricingCalculation;
